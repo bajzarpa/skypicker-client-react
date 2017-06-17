@@ -1,0 +1,7 @@
+.search-result .card-header-title {
+  font-size: 14px;
+}
+
+.search-result .card-header-title .fa {
+  margin: 0 3px;
+}

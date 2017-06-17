@@ -1,0 +1,72 @@
+.search-bar {
+  align-items: flex-end;
+  padding: 15px;
+}
+
+.search-bar .column .input {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.search-bar .DateRangePicker .DateRangePickerInput {
+  border-color: #dbdbdb
+}
+
+.search-bar .DateRangePickerInput .DateInput {
+  font-size: 15px;
+  font-weight: normal;
+  padding: 2px;
+}
+
+.search-bar .DateRangePickerInput .DateRangePickerInput__arrow svg {
+  width: 15px;
+  height: 15px;
+}
+
+.search-bar .typeahead {
+  position: relative;
+}
+
+.search-bar .typeahead input {
+  align-items: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 0;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
+  position: relative;
+  vertical-align: top;
+  background-color: white;
+  color: #363636;
+  box-shadow: none;
+  max-width: 100%;
+  width: 100%;
+}
+
+.typeahead-selector {
+  position: absolute;
+  top: 100%;
+  background: #FFFFFF;
+  width: 100%;
+  line-height: 1.25;
+  z-index: 50;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1)
+}
+
+.typeahead-selector a {
+  border-radius: 2px;
+  color: #4a4a4a;
+  display: block;
+  padding: 0.5em 0.75em;
+}
+
+.typeahead-selector a:hover {
+  background-color: whitesmoke;
+  color: #00d1b2;
+}
