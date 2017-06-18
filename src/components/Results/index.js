@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {inject, observer} from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import Result from '../Result'
 import './Results.css'
 
@@ -17,7 +17,7 @@ class Results extends Component {
 
     return (
       <div className="columns is-multiline result-list">
-        <h1 className="title column is-12">Sarch results</h1>
+        <h1 className="title column is-12">Search results</h1>
         {resultsContent}
       </div>
     )

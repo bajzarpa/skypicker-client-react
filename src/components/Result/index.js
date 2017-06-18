@@ -3,6 +3,16 @@ import moment from 'moment'
 import './Result.css'
 
 class Result extends Component {
+  makeAirlineLogos(airlines) {
+    let url = '';
+    return airlines.map((airline, index) => {
+      url = `http://pics.avs.io/100/50/${airline}.png`;
+      return (<div className="card-footer-item" key={index}>
+        <img src={url} alt={airline}/>
+      </div>)
+    });
+  }
+
   render() {
     return (
       <div className="column is-4 search-result">
@@ -22,6 +32,9 @@ class Result extends Component {
               <div>Departure: {moment.unix(this.props.data.dTime).format('YYYY-MM-DD H:m')}</div>
               <div>Arrival: {moment.unix(this.props.data.aTime).format('YYYY-MM-DD H:m')}</div>
             </div>
+          </div>
+          <div className="card-footer">
+            {this.makeAirlineLogos(this.props.data.airlines)}
           </div>
         </div>
       </div>

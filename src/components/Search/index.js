@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {inject, observer} from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { DateRangePicker } from 'react-dates'
 import './Search.css'
 
@@ -15,7 +15,7 @@ class Search extends Component {
       focusedInput: null,
       fromPlace: '',
       toPlace: '',
-      airports: [{id: 'loading', value: 'Loading'}, {id: 'loading', value: 'bloadein'}]
+      airports: [{id: 'loading', value: 'Loading'}]
     };
   }
 
@@ -27,11 +27,14 @@ class Search extends Component {
   }
 
   onPlaceSearch(keyword) {
-    if (keyword.length < 3) {
+    const KEYWORD_MIN_LENGTH = 3;
+
+    if (keyword.length < KEYWORD_MIN_LENGTH) {
       return;
     }
 
-    this.props.store.lookUpForPlace(keyword)
+    this.props.store
+      .lookUpForPlace(keyword)
       .then(response => {
         this.setState({
           airports: response.data
@@ -51,6 +54,9 @@ class Search extends Component {
   }
 
   render() {
+    const buttonStyles = this.props.store.loading ? 'button is-primary is-loading' : 'button is-primary';
+    const MAX_VISIBLE_ITEMS = 10;
+
     return(
       <div className="columns search-bar">
         <div className="column">
@@ -60,7 +66,7 @@ class Search extends Component {
             filterOption="value"
             inputProps={{'className': 'input', 'placeholder': 'From'}}
             onOptionSelected={(item) => this.setState({fromPlace: item.id})}
-            maxVisible={10}
+            maxVisible={MAX_VISIBLE_ITEMS}
             value={this.state.fromPlace}
             placeholder="From"
             onKeyUp={e => this.onPlaceSearch(e.currentTarget.value)}
@@ -73,7 +79,7 @@ class Search extends Component {
             filterOption="value"
             inputProps={{'className': 'input', 'placeholder': 'From'}}
             onOptionSelected={(item) => this.setState({toPlace: item.id})}
-            maxVisible={10}
+            maxVisible={MAX_VISIBLE_ITEMS}
             value={this.state.toPlace}
             placeholder="To"
             onKeyUp={e => this.onPlaceSearch(e.currentTarget.value)}
@@ -89,7 +95,9 @@ class Search extends Component {
           />
         </div>
         <div className="column is-1 has-text-right">
-          <button onClick={() => this.onSearchSubmit()} className="button is-primary"><i className="fa fa-search" /></button>
+          <button onClick={() => this.onSearchSubmit()} className={buttonStyles}>
+            <i className="fa fa-search" />
+          </button>
         </div>
       </div>
     )

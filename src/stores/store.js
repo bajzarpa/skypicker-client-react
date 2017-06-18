@@ -9,7 +9,6 @@ import toastr from 'toastr'
 class Store {
   constructor() {
     extendObservable(this, {
-      keyword: '',
       params: {},
       flights: [],
       loading: false
@@ -38,12 +37,18 @@ class Store {
         returnTo: to
       }
     })
-      .then(result => {
-        this.loading = false;
-        this.flights = result.data
-      })
-      .catch(error => toastr.error('There were an error while communicating with server. Please try again later'))
+      .then(result => this._onResponseSuccess(result))
+      .catch(error => Store._onResponseError(error))
   });
+
+  _onResponseSuccess(result) {
+    this.loading = false;
+    this.flights = result.data
+  }
+
+  static _onResponseError(error) {
+    toastr.error('There were an error while communicating with server. Please try again later')
+  }
 
 }
 

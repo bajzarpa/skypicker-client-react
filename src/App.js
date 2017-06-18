@@ -4,7 +4,6 @@ import Store from './stores/store'
 
 import Search from './components/Search'
 import Results from './components/Results'
-import Loading from './components/Loading'
 import './App.css'
 
 class App extends Component {
@@ -14,7 +13,6 @@ class App extends Component {
         <div className="App">
           <Search/>
           <Results/>
-          <Loading/>
         </div>
       </Provider>
     );
