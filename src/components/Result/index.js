@@ -5,11 +5,15 @@ import './Result.css'
 class Result extends Component {
   makeAirlineLogos(airlines) {
     let url = '';
+
     return airlines.map((airline, index) => {
       url = `http://pics.avs.io/100/50/${airline}.png`;
-      return (<div className="card-footer-item" key={index}>
-        <img src={url} alt={airline}/>
-      </div>)
+
+      return (
+        <div className="card-footer-item" key={index}>
+          <img src={url} alt={airline}/>
+        </div>
+      )
     });
   }
 

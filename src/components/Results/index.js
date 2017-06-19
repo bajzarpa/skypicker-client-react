@@ -6,12 +6,14 @@ import './Results.css'
 class Results extends Component {
   render() {
     let resultsContent = '';
+    let isDataPresent = this.props.store.flights.data && this.props.store.flights.data.length;
+    let isDataPresentWithoutResults = this.props.store.flights.data && this.props.store.flights._results === 0;
 
-    if (this.props.store.flights.data && this.props.store.flights.data.length) {
+    if (isDataPresent) {
       resultsContent = this.props.store.flights.data.map((item, key) => (
         <Result data={item} key={key} />
       ))
-    } else if (this.props.store.flights.data && this.props.store.flights._results === 0) {
+    } else if (isDataPresentWithoutResults) {
       resultsContent = (<p className="column is-12 has-text-centered">No results found for your criteria.</p>);
     }
 
